@@ -1,17 +1,24 @@
 package com.workon.todo.model;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.UUID;
+import com.google.cloud.firestore.annotation.DocumentId;
+import com.google.cloud.spring.data.firestore.Document;
 
 import jakarta.validation.constraints.NotEmpty;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Data
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Document(collectionName = "todos")
 public class TodoModel {
 
+    @DocumentId
     private String id;
 
     @NotEmpty
@@ -30,10 +37,4 @@ public class TodoModel {
 
     @NotEmpty
     private String status;
-
-    public TodoModel() {
-        this.id = UUID.randomUUID().toString();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        this.lastupdated = formatter.format(new Date());
-    }
 }

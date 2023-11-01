@@ -1,0 +1,9 @@
+spring:
+  cloud:
+    gcp:
+      credentials:
+        location: classpath:serviceAccount.json
+      firestore:
+        project-id: work-on-todo
+        enabled: true
+      
